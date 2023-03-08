@@ -1,8 +1,10 @@
 <?php
 
-require_once __DIR__ . '/../../vendor/autoload.php';
+namespace App\Models\Products;
 
-use App\Models\AbstractTop;
+require_once __DIR__ . '/../../../vendor/autoload.php';
+
+use App\Models\Products\AbstractTop;
 
 class WomensTop extends AbstractTop
 {
@@ -20,7 +22,7 @@ class WomensTop extends AbstractTop
         return $this->size;
     }
 
-    public function setSize(int $size): void
+    public function setSize($size): void
     {
         if ($size < 4 || $size > 18) {
             throw new Exception('Invalid size - women\'s top size must be in the range of 4 to 18');

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Products;
 
-require_once __DIR__ . '/../../vendor/autoload.php';
+require_once __DIR__ . '/../../../vendor/autoload.php';
 
-use App\Models\AbstractTop;
+use App\Models\Products\AbstractTop;
 
 class MensTop extends AbstractTop
 {
@@ -24,7 +24,8 @@ class MensTop extends AbstractTop
 
     public function setSize($size): void
     {
-        if (!in_array(strtoupper($size), ['XS', 'S', 'M', 'L', 'XL'])) {
+        $size = strtoupper($size);
+        if (!in_array($size, ['XS', 'S', 'M', 'L', 'XL'])) {
             throw new Exception('Invalid size - men\'s top size must be XS, S, M, L, or XL');
         }
         else {

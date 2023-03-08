@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Products;
 
-require_once __DIR__ . '/../../vendor/autoload.php';
+require_once __DIR__ . '/../../../vendor/autoload.php';
 
 abstract class AbstractItem
 {
@@ -43,8 +43,8 @@ abstract class AbstractItem
 
     public function setImage(string $image): void
     {
-        if (strlen($title) > 255){
-            throw new Exception('Image file name is too long, must be max. 255 characters');
+        if (strlen($image) > 1000){
+            throw new Exception('Image address is too long, must be max. 1000 characters');
         }
         else {
             $this->image = $image;
@@ -58,7 +58,8 @@ abstract class AbstractItem
 
     public function setGender(string $gender): void
     {
-        if (!in_array(strtoupper($gender), ['MALE', 'FEMALE', 'UNISEX'])){
+        $gender = strtoupper($gender);
+        if (!in_array($gender, ['MALE', 'FEMALE', 'UNISEX'])){
             throw new Exception('Gender must be male, female or unisex');
         }
         else {
@@ -66,9 +67,23 @@ abstract class AbstractItem
         }
     }
 
-    public function getCondition(): ?int
+    public function getCondition(): ?string
     {
-        return $this->condition;
+        if ($this->condition === null){
+            return $this->condition;
+        }
+        else if ($this->condition < 2){
+            return 'OK';
+        }
+        else if ($this->condition < 3){
+            return 'Good';
+        }
+        else if ($this->condition < 4){
+            return 'Excellent';
+        }
+        else {
+            return 'Brand New';
+        }
     }
 
     public function setCondition(int $condition): void
