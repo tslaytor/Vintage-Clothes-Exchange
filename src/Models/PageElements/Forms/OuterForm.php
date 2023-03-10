@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Forms;
+namespace App\Models\PageElements\Forms;
 
 abstract class OuterForm
 {

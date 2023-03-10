@@ -4,6 +4,8 @@ namespace App\Models\Products;
 
 require_once __DIR__ . '/../../../vendor/autoload.php';
 
+use \Exception as Exception;
+
 abstract class AbstractItem
 {
     private ?string $title; 
@@ -41,6 +43,9 @@ abstract class AbstractItem
         return $this->image;
     }
 
+    /**
+     * @throws Exception
+     */
     public function setImage(string $image): void
     {
         if (strlen($image) > 1000){
@@ -56,11 +61,14 @@ abstract class AbstractItem
         return $this->gender;
     }
 
+    /**
+     * @throws Exception
+     */
     public function setGender(string $gender): void
     {
         $gender = strtoupper($gender);
-        if (!in_array($gender, ['MALE', 'FEMALE', 'UNISEX'])){
-            throw new Exception('Gender must be male, female or unisex');
+        if (!in_array($gender, ['MENS', 'WOMENS', 'UNISEX'])){
+            throw new Exception('Gender must be mens, womens or unisex');
         }
         else {
             $this->gender = $gender;

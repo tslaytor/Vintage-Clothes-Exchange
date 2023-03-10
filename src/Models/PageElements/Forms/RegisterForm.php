@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Forms;
+namespace App\Models\PageElements\Forms;
 
 class RegisterForm extends OuterForm
 {

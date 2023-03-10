@@ -4,17 +4,21 @@ namespace App\Models\Products;
 
 require_once __DIR__ . '/../../../vendor/autoload.php';
 
-use App\Models\Products\AbstractTop;
+use Exception;
 
 class MensTop extends AbstractTop
 {
     private ?string $size;
 
+    /**
+     * @throws Exception
+     */
     public function __construct()
     {
         parent::__construct();
 
         $this->size = null;
+        $this->setGender('Mens');
     }
 
     public function getSize(): ?string

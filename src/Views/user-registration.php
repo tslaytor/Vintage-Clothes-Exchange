@@ -1,27 +1,27 @@
 <?php
 
+namespace App\Views;
+
+require_once __DIR__ . '/../../vendor/autoload.php';
+
 use App\Controllers\FormProcessing;
-use App\Models\Forms\RegisterForm;
+use App\Models\PageElements\Forms\RegisterForm;
+use App\Models\PageElements\HeadersAndFooters\Footer;
+use App\Models\PageElements\HeadersAndFooters\Header;
+use Symfony\Component\VarDumper\VarDumper;
+
+session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
-    try {
-        $reponse = FormProcessing::registerUser($_POST['username'], $_POST['password'], $_POST['password-confirmation']);
-    } catch (Exception $e){
-        print 'ERROR: ' . $e->getMessage() . PHP_EOL;
-    }
-    if ($reponse){
-        FormProcessing::loginuser($_POST['username'], $_POST['password']);
-    }
+    FormProcessing::userRegistrationHandler($_POST['username']);
+    header('Location: index.php');
 }
+
+echo Header::generate();
+VarDumper::dump($_SESSION);
 ?>
-
-<html>
-    <head>
-
-    </head>
-    <body>
-        <div class="notSignedIn">
-            <?php echo RegisterForm::generate(); ?>
-        </div>
-    </body>
-</html>
+<h1>Create an Account</h1>
+<div class="notSignedIn">
+    <?php echo RegisterForm::generate(); ?>
+</div>
+<?php echo Footer::generate(); ?>

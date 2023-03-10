@@ -4,7 +4,7 @@ namespace App\Models\Products;
 
 require_once __DIR__ . '/../../../vendor/autoload.php';
 
-use App\Models\Products\AbstractTop;
+use Exception;
 
 class WomensTop extends AbstractTop
 {

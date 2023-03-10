@@ -2,20 +2,16 @@
 
 namespace App\Models\PageElements\Forms;
 
-class RegisterForm extends OuterForm
+class CreditForm extends OuterForm
 {
     public static function generate(){
         $content = <<<EOF
-            <label for='username' class="form-label">User Name</label><br>
-            <input type='text' id='username' name="username" class="form-control"><br>
-            <label for='password' class="form-label">Password</label><br>
-            <input type='password' id='password' name="password" class="form-control"><br>
-            <label for='confirmPassword' class="form-label">Confirm Password</label><br>
-            <input type='password' id='confirmPassword' name="confirmPassword" class="form-control"><br>
-            <input type="submit" class="btn btn-primary" value="Register">
+            <label for='amount' class="form-label">Enter amount below</label><br>
+            <span>£</span><input type='number' id='amount' name="amount" step="0.01" class="form-control"><br>
+            <input type="submit" class="btn btn-primary" value="Add Credit">
         EOF;
 
-        return OuterForm::generateOuterForm('POST','','registerForm', $content);
+        return OuterForm::generateOuterForm('POST','','CreditForm', $content);
     }
 }
 ?>
