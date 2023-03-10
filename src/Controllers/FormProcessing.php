@@ -42,7 +42,7 @@ class FormProcessing
         return true;
     }
 
-    public static function addCredit(User $user, int $amount): void
+    public static function addCredit(User $user, float $amount): void
     {
         $pdo = Connection::getInstance()->getPdo();
         $statement = $pdo->prepare("SELECT credit FROM users WHERE id = :id");
