@@ -40,12 +40,18 @@ session_start();
         </nav>
     </header>
     <h1>Welcome to the Account page, y'all</h1>
-    <?php VarDumper::dump($_SESSION)?>
+    <?php
+        VarDumper::dump($_SESSION);
+
+
+    ?>
+
     <?php if (!isset($_SESSION['USER'])): ?>
         <a href="user-registration.php">Create an Account</a>
     <?php else : ?>
-        <div>Hello, <?php echo $_SESSION['USER']->getUsername(); ?></div>
-        <div>Your account balance is: <?php echo $_SESSION['USER']->getCredit() ?></div>
+        <?php $user = $_SESSION['USER'] ?>
+        <div>Hello, <?php echo $user->getUsername(); ?></div>
+        <div>Your account balance is: <?php echo $user->getCredit() ?></div>
         <div><a href="add-credit.php">Add credit</a></div>
     <?php endif; ?>
 

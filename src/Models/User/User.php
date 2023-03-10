@@ -13,7 +13,7 @@ class User
     private ?int $id;
     private ?string $username;
     private ?string $password;
-    private int $credit;
+    private float $credit;
 
     public function __construct($id = null, $username = null, $password = null, $credit = 0)
     {
@@ -48,12 +48,12 @@ class User
         return $this->password;
     }
 
-    public function SetCredit($credit): void
+    public function setCredit(float $credit): void
     {
         $this->credit = $credit;
     }
 
-    public function getCredit(): int
+    public function getCredit(): float
     {
         return $this->credit;
     }
