@@ -7,6 +7,7 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 use App\Models\User\User;
 use Exception;
 use PDO;
+use Symfony\Component\VarDumper\VarDumper;
 
 class FormProcessing
 {
@@ -52,5 +53,23 @@ class FormProcessing
         $statement = $pdo->prepare("UPDATE users SET credit = :newAmount WHERE id = :id");
         $statement->execute(['newAmount' => $newAmount, 'id' => $user->getId()]);
         $_SESSION['USER'] = $user->findUserInDatabase();
+    }
+
+    public static function loginHandler($username, $password): bool
+    {
+        $pdo = Connection::getInstance()->getPdo();
+        $statement = $pdo->prepare("SELECT * FROM users WHERE username = :username AND password = :password");
+        try {
+            $statement->execute(['username' => $username, 'password' => $password]);
+        } catch (Exception $e) {
+            print 'Error: ' . $e->getMessage();
+        }
+        $row = $statement->fetch(PDO::FETCH_OBJ);
+        VarDumper::dump($row);
+        if (!$row){
+            return false;
+        }
+        $_SESSION['USER'] = new User($row->id, $row->username, $row->password, $row->credit);
+        return true;
     }
 }

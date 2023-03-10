@@ -4,6 +4,7 @@ namespace App\Views;
 
 require_once __DIR__ . '/../../vendor/autoload.php';
 
+use App\Models\PageElements\HeadersAndFooters\Header;
 use App\Models\Products\MensShoe;
 use App\Models\Products\MensTop;
 use App\Models\Products\WomensTop;
@@ -12,6 +13,8 @@ use Exception;
 use Symfony\Component\VarDumper\VarDumper;
 
 session_start();
+
+echo Header::generate();
 
 $manShirt = new MensTop();
 $womanShirt = new WomensTop();
