@@ -4,7 +4,6 @@ namespace App\Views;
 require_once __DIR__ . '/../../vendor/autoload.php';
 
 use App\Controllers\FormProcessing;
-use Symfony\Component\VarDumper\VarDumper;
 use App\Models\PageElements\HeadersAndFooters\Footer;
 use App\Models\PageElements\HeadersAndFooters\Header;
 use App\Models\PageElements\Forms\LoginForm;
@@ -12,7 +11,10 @@ use App\Models\PageElements\Forms\LoginForm;
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
-    FormProcessing::loginHandler($_POST['username'], $_POST['password']);
+    if (FormProcessing::loginHandler($_POST['username'], $_POST['password'])){
+        header('Location: account.php');
+    }
+
 }
 
 echo Header::generate();

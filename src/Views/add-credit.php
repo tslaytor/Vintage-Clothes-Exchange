@@ -13,6 +13,7 @@ session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     FormProcessing::addCredit($_SESSION['USER'], $_POST['amount']);
+    header('Location: account.php');
 }
 
 echo Header::generate();

@@ -3,10 +3,16 @@ namespace App\Views;
 
 require_once __DIR__ . '/../../vendor/autoload.php';
 
+use App\Controllers\FormProcessing;
 use Symfony\Component\VarDumper\VarDumper;
 use App\Models\PageElements\HeadersAndFooters\Header;
+use App\Models\PageElements\Forms\LogoutForm;
 
 session_start();
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+    FormProcessing::logoutHandler();
+}
 
 echo Header::generate();
 ?>
@@ -23,8 +29,10 @@ echo Header::generate();
     <?php else : ?>
         <?php $user = $_SESSION['USER'] ?>
         <div>Hello, <?php echo $user->getUsername(); ?></div>
-        <div>Your account balance is: <?php echo $user->getCredit() ?></div>
+        <div>Your account balance is: £<?php echo $user->getCredit() ?></div>
         <div><a href="add-credit.php">Add credit</a></div>
+        <div><a href="user-logout.php">Log out</a></div>
+        <?php echo LogoutForm::generate(); ?>
     <?php endif; ?>
 
     </body>
