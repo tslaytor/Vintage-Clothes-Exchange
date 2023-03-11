@@ -69,7 +69,6 @@ class User
     {
         $pdo = Connection::getInstance()->getPdo();
         $statement = $pdo->prepare("SELECT * FROM users WHERE username = :username");
-        print "username is: " . $this->getUsername();
         $statement->execute(['username' => $this->getUsername()]);
         $row = $statement->fetch(PDO::FETCH_OBJ);
         if (!$row){
