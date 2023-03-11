@@ -4,7 +4,8 @@ namespace App\Models\PageElements\Forms;
 
 class RegisterForm extends OuterForm
 {
-    public static function generate(){
+    public static function generate(): string
+    {
         $content = <<<EOF
             <label for='username' class="form-label">User Name</label><br>
             <input type='text' id='username' name="username" class="form-control"><br>

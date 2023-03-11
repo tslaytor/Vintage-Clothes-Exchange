@@ -6,29 +6,29 @@ use Exception;
 
 abstract class AbstractTrouser extends AbstractItem
 {
-    private string $type;
+    private int $type;
 
     protected function __construct()
     {
         parent::__construct();
 
-        $this->setType('Trouser');
+        $this->setType(2);
     }
 
     public function setType($type): void
     {
-        if (!is_string($type)){
-            throw new Exception("Trouser type property must be a string");
+        if (!is_int($type)){
+            throw new Exception("Trouser type property must be a int");
         }
-        $type = ucfirst(strtolower($type));
-        if ($type !== 'Trouser'){
-            throw new Exception("Trouser type property must be 'Trouser'");
+        if ($type !== 2){
+            throw new Exception("Trouser type property must be int 2");
         }
         $this->type = $type;
     }
 
     public function getType(): string
     {
-        return $this->type;
+        // TODO - Look up type from type table
+        return 'Trouser';
     }
 }

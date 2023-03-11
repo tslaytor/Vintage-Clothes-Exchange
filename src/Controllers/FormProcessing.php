@@ -11,6 +11,7 @@ use Symfony\Component\VarDumper\VarDumper;
 
 class FormProcessing
 {
+    //TODO - Throw here, don't catch, and add catches to calling function
     public static function userRegistrationHandler(string $username): void
     {
         $user = new User();
@@ -30,6 +31,7 @@ class FormProcessing
     /**
      * @throws Exception
      */
+    //TODO - add catches to calling function
     public static function registerUser(User $user, string $password, string $confirmPassword): bool
     {
         if ($user->findUserInDatabase()){
@@ -43,6 +45,7 @@ class FormProcessing
         return true;
     }
 
+    //TODO - add checks, throw exceptions
     public static function addCredit(User $user, float $amount): void
     {
         $pdo = Connection::getInstance()->getPdo();
@@ -55,6 +58,7 @@ class FormProcessing
         $_SESSION['USER'] = $user->findUserInDatabase();
     }
 
+    //TODO - Throw here, don't catch, and add catches to calling function
     public static function loginHandler($username, $password): bool
     {
         $pdo = Connection::getInstance()->getPdo();
@@ -65,11 +69,17 @@ class FormProcessing
             print 'Error: ' . $e->getMessage();
         }
         $row = $statement->fetch(PDO::FETCH_OBJ);
-        VarDumper::dump($row);
         if (!$row){
             return false;
         }
         $_SESSION['USER'] = new User($row->id, $row->username, $row->password, $row->credit);
         return true;
+    }
+
+    //TODO - add checks, throw exceptions
+    public static function logoutHandler(): void
+    {
+        unset($_SESSION['USER']);
+        print "You have been logged out";
     }
 }

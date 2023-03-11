@@ -20,7 +20,7 @@ class MensTrouser extends AbstractTrouser
 
     public function setSize($size): void
     {
-        if (!is_array($this) || count($size) != 2 ){
+        if (!is_array($size) || count($size) != 2 ){
             throw new Exception('Mens trouser size must be an array of length 2');
         }
         foreach ($size as $value){

@@ -22,8 +22,13 @@ abstract class AbstractTop extends AbstractItem
         if ($this->type === 0) {
             return 'T-Shirt';
         }
-        else {
+        else if ($this->type === 1)
+        {
             return 'Jumper';
+        }
+        else
+        {
+            throw new Exception("The top type saved is not valid, must be int 1 or 2");
         }
         
     }

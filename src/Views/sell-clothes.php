@@ -5,7 +5,7 @@ namespace App\Views;
 require_once __DIR__ . '/../../vendor/autoload.php';
 
 use App\Controllers\FormProcessing;
-use App\Models\PageElements\Forms\RegisterForm;
+use App\Models\PageElements\Forms\SellClothesForm;
 use App\Models\PageElements\HeadersAndFooters\Footer;
 use App\Models\PageElements\HeadersAndFooters\Header;
 use Symfony\Component\VarDumper\VarDumper;
@@ -19,8 +19,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 
 echo Header::generate();
 ?>
-<h1>Create an Account</h1>
-<div class="notSignedIn">
-    <?php echo RegisterForm::generate(); ?>
-</div>
+<h1>Sell your clothes here!</h1>
+    <?php echo SellClothesForm::generate(); ?>
 <?php echo Footer::generate(); ?>

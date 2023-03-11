@@ -80,13 +80,13 @@ abstract class AbstractItem
         if ($this->condition === null){
             return $this->condition;
         }
-        else if ($this->condition < 2){
+        else if ($this->condition == 0){
             return 'OK';
         }
-        else if ($this->condition < 3){
+        else if ($this->condition == 1){
             return 'Good';
         }
-        else if ($this->condition < 4){
+        else if ($this->condition == 2){
             return 'Excellent';
         }
         else {
@@ -104,21 +104,21 @@ abstract class AbstractItem
         }
     }
 
-    public function getBrand(): ?string
-    {
-        return $this->brand;
-    }
-
-    public function setBrand(string $brand): void
-    {
-        if (strlen($brand) > 100){
-            throw new Exception('Brand must be max. 100 characters');
-        }
-        else {
-            $this->brand = $brand;
-        }
-        
-    }
+//    public function getBrand(): ?string
+//    {
+//        return $this->brand;
+//    }
+//
+//    public function setBrand(string $brand): void
+//    {
+//        if (strlen($brand) > 100){
+//            throw new Exception('Brand must be max. 100 characters');
+//        }
+//        else {
+//            $this->brand = $brand;
+//        }
+//
+//    }
 
     abstract public function getType();
 

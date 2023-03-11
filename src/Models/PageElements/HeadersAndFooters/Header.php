@@ -32,7 +32,7 @@ class Header
                                             <a class="nav-link active" aria-current="page" href="index.php">Buy Clothes</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="#">Sell Clothes</a>
+                                            <a class="nav-link" href="sell-clothes.php">Sell Clothes</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="account.php">Account $username</a>

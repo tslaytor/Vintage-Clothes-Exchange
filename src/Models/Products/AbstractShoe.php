@@ -9,14 +9,14 @@ use Exception;
 abstract class AbstractShoe extends AbstractItem
 {
 
-    private string $type;
+    private int $type;
     private int|float|null $size;
 
     public function __construct()
     {
         parent::__construct();
         try {
-            $this->setType('Shoe');
+            $this->setType(3);
         }
         catch (Exception $e){
             print "ERROR: setting type for Mens Shoe in constructor. Message: " . $e->getMessage();
@@ -34,12 +34,11 @@ abstract class AbstractShoe extends AbstractItem
      */
     public function setType($type): void
     {
-        if (!is_string($type)){
-            throw new Exception("Shoe type property must be a string");
+        if (!is_int($type)){
+            throw new Exception("Shoe type property must be an int");
         }
-        $type = ucfirst(strtolower($type));
-        if ($type !== 'Shoe'){
-            throw new Exception("Shoes type property must be 'Shoe'");
+        if ($type !== 3){
+            throw new Exception("Shoes type property must be an int of 3");
         }
         $this->type = $type;
 
