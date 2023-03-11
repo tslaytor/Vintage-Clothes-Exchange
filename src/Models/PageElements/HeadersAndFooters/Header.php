@@ -2,10 +2,14 @@
 
 namespace App\Models\PageElements\HeadersAndFooters;
 
+use App\Models\User\User;
+
 class Header
 {
     public static function generate(): string
     {
+        if (isset($_SESSION['USER'])) $username = ': ' . ucfirst($_SESSION['USER']->getUsername());
+        else $username = ': you are not logged in';
         return <<<EOF
             <html lang="en">
                 <head>
@@ -18,23 +22,22 @@ class Header
                     <header>
                         <nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: #e3f2fd;">
                             <div class="container-fluid">
-                                <a class="navbar-brand" href="index.php">Vintage Clothes Exchange</a>
+                                <a class="navbar-brand">Vintage Clothes Exchange</a>
                                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                                     <span class="navbar-toggler-icon"></span>
                                 </button>
                                 <div class="collapse navbar-collapse" id="navbarText">
                                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                                         <li class="nav-item">
-                                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                                            <a class="nav-link active" aria-current="page" href="index.php">Buy Clothes</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="#">Features</a>
+                                            <a class="nav-link" href="#">Sell Clothes</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="#">Pricing</a>
+                                            <a class="nav-link" href="account.php">Account $username</a>
                                         </li>
                                     </ul>
-                                    <span class="navbar-text"><a href="account.php">Account</a></span>
                                 </div>
                             </div>
                         </nav>
