@@ -29,6 +29,6 @@ abstract class AbstractTrouser extends AbstractItem
     public function getType(): string
     {
         // TODO - Look up type from type table
-        return 'Trouser';
+        return $this->type;
     }
 }

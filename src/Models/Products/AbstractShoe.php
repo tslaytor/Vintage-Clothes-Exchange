@@ -50,4 +50,5 @@ abstract class AbstractShoe extends AbstractItem
     }
 
     abstract public function setSize($size): void;
+    abstract public function getTable(): string;
 }

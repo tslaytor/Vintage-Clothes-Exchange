@@ -4,23 +4,35 @@ namespace App\Models\Products;
 
 require_once __DIR__ . '/../../../vendor/autoload.php';
 
+use App\Controllers\FormProcessing;
 use \Exception as Exception;
 
 abstract class AbstractItem
 {
-    private ?string $title; 
+    private ?int $sellerId;
+    private ?string $title;
     private ?string $image; 
     private ?string $gender;
     private ?int $condition; 
-    private ?string $brand;
+    private ?float $price;
 
     protected function __construct()
     {
+        $this->sellerId = null;
         $this->title = null;
         $this->image = null;
         $this->gender = null;
         $this->condition = null;
-        $this->brand = null;
+    }
+
+    public function setSellerId($sellerId): void
+    {
+        $this->sellerId = $sellerId;
+    }
+
+    public function getSellerId(): int
+    {
+        return $this->sellerId;
     }
 
     public function getTitle(): ?string
@@ -75,23 +87,24 @@ abstract class AbstractItem
         }
     }
 
-    public function getCondition(): ?string
+    public function getCondition(): ?int
     {
-        if ($this->condition === null){
-            return $this->condition;
-        }
-        else if ($this->condition == 0){
-            return 'OK';
-        }
-        else if ($this->condition == 1){
-            return 'Good';
-        }
-        else if ($this->condition == 2){
-            return 'Excellent';
-        }
-        else {
-            return 'Brand New';
-        }
+        return $this->condition;
+//        if ($this->condition === null){
+//            return $this->condition;
+//        }
+//        else if ($this->condition == 0){
+//            return 'OK';
+//        }
+//        else if ($this->condition == 1){
+//            return 'Good';
+//        }
+//        else if ($this->condition == 2){
+//            return 'Excellent';
+//        }
+//        else {
+//            return 'Brand New';
+//        }
     }
 
     public function setCondition(int $condition): void
@@ -120,6 +133,21 @@ abstract class AbstractItem
 //
 //    }
 
+    public function setPrice(float|int $price): void
+    {
+        $this->price = $price;
+    }
+
+    public function getPrice(): float|int
+    {
+        return $this->price;
+    }
+
+    public function save(): void
+    {
+        FormProcessing::save($this);
+    }
+
     abstract public function getType();
 
     abstract public function setType($type): void;
@@ -127,5 +155,7 @@ abstract class AbstractItem
     abstract public function getSize();
 
     abstract public function setSize($size): void;
+
+    abstract public function getTable(): string;
 
 }

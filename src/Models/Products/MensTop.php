@@ -36,4 +36,9 @@ class MensTop extends AbstractTop
             $this->size = $size;
         }
     }
+
+    public function getTable(): string
+    {
+        return 'mens_top';
+    }
 }

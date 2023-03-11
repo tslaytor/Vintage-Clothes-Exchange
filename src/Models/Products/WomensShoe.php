@@ -38,4 +38,9 @@ class WomensShoe extends AbstractShoe
             );
         }
     }
+
+    public function getTable(): string
+    {
+        return 'womens_shoes';
+    }
 }

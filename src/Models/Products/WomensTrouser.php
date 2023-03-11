@@ -39,4 +39,9 @@ class WomensTrouser extends AbstractTrouser
             $this->size = $size;
         }
     }
+
+    public function getTable(): string
+    {
+        return 'womens_trousers';
+    }
 }

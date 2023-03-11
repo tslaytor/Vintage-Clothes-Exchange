@@ -15,6 +15,7 @@ class WomensTop extends AbstractTop
         parent::__construct();
 
         $this->size = null;
+        $this->setGender('Womens');
     }
 
     public function getSize(): ?string
@@ -30,5 +31,10 @@ class WomensTop extends AbstractTop
         else {
             $this->size = $size;
         }
+    }
+
+    public function getTable(): string
+    {
+        return 'womens_top';
     }
 }

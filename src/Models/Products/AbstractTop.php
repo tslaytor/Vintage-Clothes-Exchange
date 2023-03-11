@@ -19,17 +19,18 @@ abstract class AbstractTop extends AbstractItem
 
     public function getType(): ?string
     {
-        if ($this->type === 0) {
-            return 'T-Shirt';
-        }
-        else if ($this->type === 1)
-        {
-            return 'Jumper';
-        }
-        else
-        {
-            throw new Exception("The top type saved is not valid, must be int 1 or 2");
-        }
+        return $this->type;
+//        if ($this->type === 0) {
+//            return 'T-Shirt';
+//        }
+//        else if ($this->type === 1)
+//        {
+//            return 'Jumper';
+//        }
+//        else
+//        {
+//            throw new Exception("The top type saved is not valid, must be int 1 or 2");
+//        }
         
     }
 
@@ -42,4 +43,5 @@ abstract class AbstractTop extends AbstractItem
             $this->type = $type;
         }   
     }
+    abstract public function getTable(): string;
 }

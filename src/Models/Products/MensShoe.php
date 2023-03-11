@@ -41,4 +41,9 @@ class MensShoe extends AbstractShoe
             );
         }
     }
+
+    public function getTable(): string
+    {
+        return 'mens_shoes';
+    }
 }

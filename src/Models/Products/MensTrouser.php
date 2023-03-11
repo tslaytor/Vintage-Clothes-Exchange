@@ -28,13 +28,17 @@ class MensTrouser extends AbstractTrouser
                 throw new Exception('The type values for mens trouser size must be int');
             }
         }
-        $this->size = ['waist' => $size[0], 'leg' => $size[1]];
+        $this->size = $size;
     }
 
-    public function getSize(): string
+    public function getSize(): array
     {
-        return "Waist: " . $this->size['waist'] . " inches" . PHP_EOL .
-                "Leg: " . $this->size['leg'] . " inches" . PHP_EOL;
+        return $this->size;
+    }
+
+    public function getTable(): string
+    {
+        return 'mens_trousers';
     }
 
 }
