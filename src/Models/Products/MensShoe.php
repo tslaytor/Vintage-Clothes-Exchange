@@ -7,14 +7,11 @@ use Symfony\Component\VarDumper\VarDumper;
 
 class MensShoe extends AbstractShoe
 {
-    private string $type;
-    private ?float $size;
 
     public function __construct()
     {
         parent::__construct();
         $this->setGender('Mens');
-        $this->size = null;
     }
 
     /**
@@ -37,13 +34,9 @@ class MensShoe extends AbstractShoe
         }
     }
 
-    public function getSize()
-    {
-        return $this->size;
-    }
+//    public function getSize()
+//    {
+//        return $this->size;
+//    }
 
-    public function getTable(): string
-    {
-        return 'mens_shoes';
-    }
 }

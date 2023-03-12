@@ -10,13 +10,7 @@ class WomensShoe extends AbstractShoe
     public function __construct()
     {
         parent::__construct();
-        try {
-            $this->setType('Shoe');
-        }
-        catch (Exception $e){
-            print "ERROR: setting type for Shoe in constructor. Message: " . $e->getMessage();
-        }
-        $this->size = null;
+        $this->setGender('Womens');
     }
 
     /**
@@ -39,8 +33,4 @@ class WomensShoe extends AbstractShoe
         }
     }
 
-    public function getTable(): string
-    {
-        return 'womens_shoes';
-    }
 }
