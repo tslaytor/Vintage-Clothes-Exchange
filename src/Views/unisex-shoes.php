@@ -18,11 +18,11 @@ session_start();
 
 echo Header::generate();
 
-$products = Lister::all();
+$products = Lister::unisexShoes();
 ?>
 <div>
     <ul class="browse-by-type">
-        <li><a style="color: #a31b1b" href="index.php">All</a></li>
+        <li><a href="index.php">All</a></li>
         <li><a href="mens-tshirts.php">Mens Tshirts</a></li>
         <li><a href="mens-jumpers.php">Mens Jumpers</a></li>
         <li><a href="mens-trousers.php">Mens Trousers</a></li>
@@ -34,7 +34,7 @@ $products = Lister::all();
         <li><a href="unisex-tshirts.php">Unisex Tshirts</a></li>
         <li><a href="unisex-jumpers.php">Unisex Jumpers</a></li>
         <li><a href="unisex-trousers.php">Unisex Trousers</a></li>
-        <li><a href="unisex-shoes.php">Unisex Shoes</a></li>
+        <li><a style="color: #a31b1b" href="unisex-shoes.php">Unisex Shoes</a></li>
     </ul>
 </div>
 <div class="grid-container">

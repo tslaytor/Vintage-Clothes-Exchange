@@ -18,12 +18,12 @@ session_start();
 
 echo Header::generate();
 
-$products = Lister::all();
+$products = Lister::mensTshirts();
 ?>
 <div>
     <ul class="browse-by-type">
-        <li><a style="color: #a31b1b" href="index.php">All</a></li>
-        <li><a href="mens-tshirts.php">Mens Tshirts</a></li>
+        <li><a href="index.php">All</a></li>
+        <li><a style="color: #a31b1b" href="mens-tshirts.php">Mens Tshirts</a></li>
         <li><a href="mens-jumpers.php">Mens Jumpers</a></li>
         <li><a href="mens-trousers.php">Mens Trousers</a></li>
         <li><a href="mens-shoes.php">Mens Shoes</a></li>
