@@ -20,7 +20,7 @@ session_start();
 echo Header::generate();
 ?>
 <h1>What kind of clothing item do you want to sell?</h1>
-<ul>
+<ul class="sell-clothes-list">
     <a href="create-listing-pages/sell-mens-tshirt.php"><li>Men's T-shirt</li></a>
     <a href="create-listing-pages/sell-mens-jumper.php"><li>Men's Jumper</li></a>
     <a href="create-listing-pages/sell-mens-trousers.php"><li>Men's Trousers</li></a>
