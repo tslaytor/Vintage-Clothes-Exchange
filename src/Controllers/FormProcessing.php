@@ -88,39 +88,11 @@ class FormProcessing
         print "You have been logged out";
     }
 
-//    public static function sellClothes($post): void
-//    {
-//        VarDumper::dump($post);
-//    }
-
-    public static function sellMensTop($post, $type)
+    public static function sellTop($className, $post, $type)
     {
         VarDumper::dump($post);
 
-        $tshirt = new MensTop();
-
-        VarDumper::dump($tshirt);
-
-        $tshirt->setSellerId($_SESSION['USER']->getId());
-        $tshirt->setTitle($post['title']);
-        $tshirt->setImage($post['image']);
-        $tshirt->setSize($post['size']);
-        $tshirt->setCondition($post['condition']);
-        $tshirt->setPrice($post['price']);
-        $tshirt->setType($type);
-
-
-        VarDumper::dump($tshirt);
-
-        $tshirt->save();
-
-    }
-
-    public static function sellWomensTop($post, $type)
-    {
-        VarDumper::dump($post);
-
-        $tshirt = new WomensTop();
+        $tshirt = new $className();
 
         VarDumper::dump($tshirt);
 

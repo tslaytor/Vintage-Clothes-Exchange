@@ -8,11 +8,13 @@ use App\Controllers\FormProcessing;
 use App\Models\PageElements\Forms\MensTopForm;
 use App\Models\PageElements\HeadersAndFooters\Footer;
 use App\Models\PageElements\HeadersAndFooters\Header;
+use App\Models\Products\MensTop;
 
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
-    FormProcessing::sellMensTop($_POST, 1);
+
+    FormProcessing::sellTop(MensTop::class, $_POST, 1);
 //    header('Location: index.php');
 }
 

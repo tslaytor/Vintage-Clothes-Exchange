@@ -8,11 +8,12 @@ use App\Controllers\FormProcessing;
 use App\Models\PageElements\Forms\WomensTopForm;
 use App\Models\PageElements\HeadersAndFooters\Footer;
 use App\Models\PageElements\HeadersAndFooters\Header;
+use App\Models\Products\WomensTop;
 
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
-    FormProcessing::sellWomensTop($_POST, 1);
+    FormProcessing::sellTop(WomensTop::class, $_POST, 1);
 //    header('Location: index.php');
 }
 
