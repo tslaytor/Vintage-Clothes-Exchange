@@ -10,7 +10,6 @@ abstract class AbstractShoe extends AbstractItem
 {
 
     private int $type;
-    private int|float|null $size;
 
     public function __construct()
     {
@@ -21,10 +20,9 @@ abstract class AbstractShoe extends AbstractItem
         catch (Exception $e){
             print "ERROR: setting type for Mens Shoe in constructor. Message: " . $e->getMessage();
         }
-        $this->size = null;
     }
 
-    public function getType(): string
+    public function getType(): int
     {
         return $this->type;
     }
@@ -44,10 +42,10 @@ abstract class AbstractShoe extends AbstractItem
 
     }
 
-    public function getSize(): int|float|null
-    {
-        return $this->size;
-    }
+//    public function getSize(): int|float|null
+//    {
+//        return $this->size;
+//    }
 
     abstract public function setSize($size): void;
     abstract public function getTable(): string;

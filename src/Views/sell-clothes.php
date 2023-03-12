@@ -24,7 +24,7 @@ echo Header::generate();
     <a href="sell-mens-tshirt.php"><li>Men's T-shirt</li></a>
     <a href="sell-mens-jumper.php"><li>Men's Jumper</li></a>
     <a href="sell-mens-trousers.php"><li>Men's Trousers</li></a>
-    <a><li>Men's Shoes</li></a>
+    <a href="sell-mens-shoes.php"><li>Men's Shoes</li></a>
     <a href="sell-womens-tshirt.php"><li>Women's T-shirt</li></a>
     <a href="sell-womens-jumper.php"><li>Women's Jumper</li></a>
     <a href="sell-womens-trousers.php"><li>Women's Trousers</li></a>

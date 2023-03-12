@@ -4,6 +4,7 @@ namespace App\Models\Products;
 
 require_once __DIR__ . '/../../../vendor/autoload.php';
 
+use App\Controllers\Connection;
 use App\Controllers\FormProcessing;
 use \Exception as Exception;
 
@@ -145,7 +146,22 @@ abstract class AbstractItem
 
     public function save(): void
     {
-        FormProcessing::save($this);
+        $pdo = Connection::getInstance()->getPdo();
+        $statement = $pdo->prepare("INSERT INTO " . $this->getTable() .
+            " (seller, title, image, gender, item_condition, price, size, type)
+        VALUES (:seller, :title, :image, :gender, :item_condition, :price, :size, :type)");
+
+        $statement->execute([
+            'seller' => $this->getSellerId(),
+            'title' => $this->getTitle(),
+            'image' => $this->getImage(),
+            'gender' => $this->getGender(),
+            'item_condition' => $this->getCondition(),
+            'price' => $this->getPrice(),
+            'size' => $this->getSize(),
+            'type' => $this->getType()
+        ]);
+
     }
 
     abstract public function getType();

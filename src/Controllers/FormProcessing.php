@@ -5,10 +5,7 @@ namespace App\Controllers;
 require_once __DIR__ . '/../../vendor/autoload.php';
 
 use App\Models\Products\AbstractItem;
-use App\Models\Products\MensTop;
 use App\Models\Products\MensTrouser;
-use App\Models\Products\WomensTop;
-use App\Models\Products\WomensTrouser;
 use App\Models\User\User;
 use Exception;
 use PDO;
@@ -88,101 +85,44 @@ class FormProcessing
         print "You have been logged out";
     }
 
-    public static function sellTop($className, $post, $type)
+    public static function sellItem(AbstractItem $productObj, $post, $type)
     {
-        VarDumper::dump($post);
-
-        $tshirt = new $className();
-
-        VarDumper::dump($tshirt);
-
-        $tshirt->setSellerId($_SESSION['USER']->getId());
-        $tshirt->setTitle($post['title']);
-        $tshirt->setImage($post['image']);
-        $tshirt->setSize($post['size']);
-        $tshirt->setCondition($post['condition']);
-        $tshirt->setPrice($post['price']);
-        $tshirt->setType($type);
-
-
-        VarDumper::dump($tshirt);
-
-        $tshirt->save();
-
-    }
-
-    public static function sellMensTrousers($post)
-    {
-        VarDumper::dump($post);
-
-        VarDumper::dump(['waist' => intval($post['waist']), 'leg' => intval($post['leg'])]);
-
-        $trouser = new MensTrouser();
-
-        VarDumper::dump($trouser);
-
-        $trouser->setSellerId($_SESSION['USER']->getId());
-        $trouser->setTitle($post['title']);
-        $trouser->setImage($post['image']);
-        $trouser->setSize(['waist' => intval($post['waist']), 'leg' => intval($post['leg'])]);
-        $trouser->setCondition($post['condition']);
-        $trouser->setPrice($post['price']);
-        $trouser->setType(2);
-
-
-        VarDumper::dump($trouser);
-
-        $trouser->save();
-
-    }
-
-    public static function sellWomensTrousers($post)
-    {
-        VarDumper::dump($post);
-
-        $trouser = new WomensTrouser();
-
-        VarDumper::dump($trouser);
-
-        $trouser->setSellerId($_SESSION['USER']->getId());
-        $trouser->setTitle($post['title']);
-        $trouser->setImage($post['image']);
-        $trouser->setSize(intval($post['size']));
-        $trouser->setCondition($post['condition']);
-        $trouser->setPrice($post['price']);
-        $trouser->setType(2);
-
-
-        VarDumper::dump($trouser);
-
-        $trouser->save();
-
-    }
-
-    public static function save(AbstractItem $object): void
-    {
-        if (is_array($object->getSize())){
-            $size = json_encode($object->getSize());
+        VarDumper::dump($post['size']);
+        VarDumper::dump($productObj);
+        if ($productObj::class === "App\Models\Products\MensTrouser"){
+            $post['size'] = ['waist' => $post['waist'], 'leg' => $post['leg']];
         }
-        else {
-            $size = $object->getSize();
-        }
-        $pdo = Connection::getInstance()->getPdo();
-        $statement = $pdo->prepare("INSERT INTO " . $object->getTable() .
-        " (seller, title, image, gender, item_condition, price, size, type)
-        VALUES (:seller, :title, :image, :gender, :item_condition, :price, :size, :type)");
 
-        $statement->execute([
-            'seller' => $object->getSellerId(),
-            'title' => $object->getTitle(),
-            'image' => $object->getImage(),
-            'gender' => $object->getGender(),
-            'item_condition' => $object->getCondition(),
-            'price' => $object->getPrice(),
-            'size' => $size,
-            'type' => $object->getType()
-        ]);
-
-
+        $productObj->setSellerId($_SESSION['USER']->getId());
+        $productObj->setTitle($post['title']);
+        $productObj->setImage($post['image']);
+        $productObj->setSize($post['size']);
+        $productObj->setCondition($post['condition']);
+        $productObj->setPrice($post['price']);
+        $productObj->setType($type);
+        VarDumper::dump($productObj);
+        $productObj->save();
     }
+
+//    public static function save(AbstractItem $object): void
+//    {
+//
+//        $pdo = Connection::getInstance()->getPdo();
+//        $statement = $pdo->prepare("INSERT INTO " . $object->getTable() .
+//        " (seller, title, image, gender, item_condition, price, size, type)
+//        VALUES (:seller, :title, :image, :gender, :item_condition, :price, :size, :type)");
+//
+//        $statement->execute([
+//            'seller' => $object->getSellerId(),
+//            'title' => $object->getTitle(),
+//            'image' => $object->getImage(),
+//            'gender' => $object->getGender(),
+//            'item_condition' => $object->getCondition(),
+//            'price' => $object->getPrice(),
+//            'size' => $object->getSize(),
+//            'type' => $object->getType()
+//        ]);
+//
+//
+//    }
 }

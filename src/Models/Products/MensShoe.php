@@ -3,23 +3,18 @@
 namespace App\Models\Products;
 
 use Exception;
+use Symfony\Component\VarDumper\VarDumper;
 
 class MensShoe extends AbstractShoe
 {
     private string $type;
-    private int|float|null $size;
+    private ?float $size;
 
     public function __construct()
     {
         parent::__construct();
-        try {
-            $this->setType('Shoe');
-        }
-        catch (Exception $e){
-            print "ERROR: setting type for Mens Shoe in constructor. Message: " . $e->getMessage();
-        }
-        $this->size = null;
         $this->setGender('Mens');
+        $this->size = null;
     }
 
     /**
@@ -40,6 +35,11 @@ class MensShoe extends AbstractShoe
                 "Error: Setting Mens shoe size. Must be a whole int or half float (ending in .5)  and in range of 3 to 14"
             );
         }
+    }
+
+    public function getSize()
+    {
+        return $this->size;
     }
 
     public function getTable(): string

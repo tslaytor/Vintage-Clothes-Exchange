@@ -13,7 +13,7 @@ use App\Models\Products\WomensTop;
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
-    FormProcessing::sellTop(WomensTop::class, $_POST, 1);
+    FormProcessing::sellItem(new WomensTop, $_POST, 1);
 //    header('Location: index.php');
 }
 

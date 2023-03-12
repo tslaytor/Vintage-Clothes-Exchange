@@ -14,7 +14,7 @@ session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 
-    FormProcessing::sellTop(MensTop::class, $_POST, 1);
+    FormProcessing::sellItem(new MensTop, $_POST, 1);
 //    header('Location: index.php');
 }
 

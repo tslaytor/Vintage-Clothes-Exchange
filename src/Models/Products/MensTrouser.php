@@ -24,16 +24,16 @@ class MensTrouser extends AbstractTrouser
             throw new Exception('Mens trouser size must be an array of length 2');
         }
         foreach ($size as $value){
-            if (!is_int($value)){
-                throw new Exception('The type values for mens trouser size must be int');
+            if (!is_string($value)){
+                throw new Exception('The type values for mens trouser size must be string');
             }
         }
         $this->size = $size;
     }
 
-    public function getSize(): array
+    public function getSize(): string
     {
-        return $this->size;
+        return json_encode($this->size);
     }
 
     public function getTable(): string
