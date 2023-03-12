@@ -82,16 +82,13 @@ class FormProcessing
     public static function logoutHandler(): void
     {
         unset($_SESSION['USER']);
-        print "You have been logged out";
     }
 
     public static function sellItem(AbstractItem $productObj, $post, $type)
     {
-        VarDumper::dump($productObj);
         if ($productObj::class === "App\Models\Products\MensTrouser"){
-            $post['size'] = ['waist' => $post['waist'], 'leg' => $post['leg']];
+            $post['size'] = 'Waist: ' . $post['waist'] . '"' . ',  Leg: ' . $post['leg'] . '"';
         }
-
         $productObj->setSellerId($_SESSION['USER']->getId());
         $productObj->setTitle($post['title']);
         $productObj->setImage($post['image']);
@@ -99,7 +96,6 @@ class FormProcessing
         $productObj->setCondition($post['condition']);
         $productObj->setPrice($post['price']);
         $productObj->setType($type);
-        VarDumper::dump($productObj);
         $productObj->save();
     }
 

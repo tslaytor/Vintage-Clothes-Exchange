@@ -1,3 +1,80 @@
 form {
   margin: 2rem;
 }
+.browse-by-type {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: rgba(245, 245, 220, 0.44);
+  border: beige solid 3px;
+}
+.browse-by-type > li {
+  list-style: none;
+  margin: 1rem 2rem;
+  color: cadetblue;
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 667px;
+  margin: auto;
+}
+.product-listing {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+  min-height: 10rem;
+  border: black solid 2px;
+  min-width: 250px;
+  max-width: 300px;
+  padding: 0.5rem;
+
+  .listing-image {
+    //flex-grow: 1;
+    height: 280px;
+    width: 100%;
+    object-fit: contain;
+  }
+}
+
+.image-container{
+  flex-grow: 1;
+}
+
+.listing-title{
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.listing-gender{
+  font-size: 0.8rem;
+}
+
+
+.listing-condition{
+  font-size: 0.8rem;
+}
+
+.listing-price{
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.listing-sold-by{
+  font-size: 0.8rem;
+}
+
+@media (min-width: 1000px) {
+  .grid-container {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 1000px;
+  }
+}
+
+@media (min-width: 1333px) {
+  .grid-container {
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 1333px;
+  }
+}
+

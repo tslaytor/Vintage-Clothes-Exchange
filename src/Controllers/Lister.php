@@ -9,8 +9,8 @@ use App\Models\Products\MensShoe;
 use App\Models\Products\WomensTop;
 use App\Models\Products\WomensTrouser;
 use App\Models\Products\WomensShoe;
-use Symfony\Component\VarDumper\VarDumper;
 use PDO;
+use Symfony\Component\VarDumper\VarDumper;
 
 class Lister
 {
@@ -114,7 +114,6 @@ class Lister
             $statement = $pdo->prepare("SELECT * FROM " . $productObject->getTable() . " WHERE type = :type AND gender = :gender");
             $statement->execute(['type' => $productObject->getType(), 'gender' => $productObject->getGender()]);
             $rows = $statement->fetchAll(PDO::FETCH_OBJ);
-            VarDumper::dump($rows);
             if ($rows){
                 foreach ( $rows as $item) {
                     $obj = new $productObject();
@@ -126,10 +125,10 @@ class Lister
                     $obj->setCondition($item->item_condition);
                     $obj->setPrice($item->price);
 
-                    if ($productObject::class === "App\\Models\\Products\\MensTrouser"){
-                        VarDumper::dump(json_decode($item->size, true));
-                        $item->size = json_decode($item->size, true);
-                    }
+//                    if ($productObject::class === "App\\Models\\Products\\MensTrouser"){
+//                        VarDumper::dump($item->size);
+//                        $item->size = json_decode($item->size, true);
+//                    }
                     $obj->setSize($item->size);
                     $obj->setType($productObject->getType());
                     $allItems[] = $obj;

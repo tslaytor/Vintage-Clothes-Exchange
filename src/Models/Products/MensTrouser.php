@@ -8,7 +8,7 @@ use Exception;
 
 class MensTrouser extends AbstractTrouser
 {
-    private ?array $size;
+    private ?string $size;
 
     public function __construct($gender = 'Mens')
     {
@@ -20,20 +20,20 @@ class MensTrouser extends AbstractTrouser
 
     public function setSize($size): void
     {
-        if (!is_array($size) || count($size) != 2 ){
-            throw new Exception('Mens trouser size must be an array of length 2');
-        }
-        foreach ($size as $value){
-            if (!is_string($value)){
-                throw new Exception('The type values for mens trouser size must be string');
-            }
-        }
+//        if (!is_array($size) || count($size) != 2 ){
+//            throw new Exception('Mens trouser size must be an array of length 2');
+//        }
+//        foreach ($size as $value){
+//            if (!is_string($value)){
+//                throw new Exception('The type values for mens trouser size must be string');
+//            }
+//        }
         $this->size = $size;
     }
 
     public function getSize(): string
     {
-        return json_encode($this->size);
+        return $this->size;
     }
 
     public function getTable(): string

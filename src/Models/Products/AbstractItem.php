@@ -7,6 +7,7 @@ require_once __DIR__ . '/../../../vendor/autoload.php';
 use App\Controllers\Connection;
 use App\Controllers\FormProcessing;
 use \Exception as Exception;
+use Symfony\Component\VarDumper\VarDumper;
 
 abstract class AbstractItem
 {
@@ -52,6 +53,15 @@ abstract class AbstractItem
     public function getSellerId(): int
     {
         return $this->sellerId;
+    }
+
+    public function getSeller(): string
+    {
+        $pdo = Connection::getInstance()->getPdo();
+        $statement = $pdo->prepare("SELECT username FROM users WHERE id = :id");
+        $statement->execute(['id' => $this->getSellerId()]);
+        return $statement->fetchColumn();
+
     }
 
     public function getTitle(): ?string
@@ -106,7 +116,7 @@ abstract class AbstractItem
         }
     }
 
-    public function getCondition(): ?int
+    public function getCondition(): ?string
     {
         return $this->condition;
 //        if ($this->condition === null){
@@ -122,13 +132,13 @@ abstract class AbstractItem
 //            return 'Excellent';
 //        }
 //        else {
-//            return 'Brand New';
+//            return 'Brand New!!';
 //        }
     }
 
     public function setCondition(int $condition): void
     {
-        if ($condition < 1 || $condition > 4) {
+        if ($condition < 0 || $condition > 3) {
             throw new Exception("Condition must be 1, 2, 3, or 4");
         }
         else {
@@ -136,30 +146,31 @@ abstract class AbstractItem
         }
     }
 
-//    public function getBrand(): ?string
-//    {
-//        return $this->brand;
-//    }
-//
-//    public function setBrand(string $brand): void
-//    {
-//        if (strlen($brand) > 100){
-//            throw new Exception('Brand must be max. 100 characters');
-//        }
-//        else {
-//            $this->brand = $brand;
-//        }
-//
-//    }
+    public function getConditionText(): string
+    {
+       $condition = $this->getCondition();
+       if ($condition == 0){
+            return 'OK';
+        }
+        else if ($condition == 1){
+            return 'Good';
+        }
+        else if ($condition == 2){
+            return 'Excellent';
+        }
+        else {
+            return 'Brand New!!';
+        }
+    }
 
     public function setPrice(float|int $price): void
     {
         $this->price = $price;
     }
 
-    public function getPrice(): float|int
+    public function getPrice(): string
     {
-        return $this->price;
+        return number_format($this->price, 2);
     }
 
     public function save(): void
@@ -168,7 +179,6 @@ abstract class AbstractItem
         $statement = $pdo->prepare("INSERT INTO " . $this->getTable() .
             " (seller, title, image, gender, item_condition, price, size, type)
         VALUES (:seller, :title, :image, :gender, :item_condition, :price, :size, :type)");
-
         $statement->execute([
             'seller' => $this->getSellerId(),
             'title' => $this->getTitle(),
@@ -179,6 +189,15 @@ abstract class AbstractItem
             'size' => $this->getSize(),
             'type' => $this->getType()
         ]);
+
+    }
+
+    public function getTypeName(): string
+    {
+        $pdo = Connection::getInstance()->getPdo();
+        $statement = $pdo->prepare("SELECT type_name FROM types WHERE id = :id");
+        $statement->execute(['id' => $this->getType()]);
+        return $statement->fetchColumn();
 
     }
 

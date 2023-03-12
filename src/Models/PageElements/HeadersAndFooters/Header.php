@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Models\PageElements\HeadersAndFooters;
-
 use App\Models\User\User;
 
 class Header
@@ -29,13 +28,13 @@ class Header
                                 <div class="collapse navbar-collapse" id="navbarText">
                                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                                         <li class="nav-item">
-                                            <a class="nav-link active" aria-current="page" href="index.php">Buy Clothes</a>
+                                            <a class="nav-link active" aria-current="page" href="/Vintage-Clothes-Exchange/src/Views/index.php">Buy Clothes</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="sell-clothes.php">Sell Clothes</a>
+                                            <a class="nav-link" href="/Vintage-Clothes-Exchange/src/Views/sell-clothes.php">Sell Clothes</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="account.php">Account $username</a>
+                                            <a class="nav-link" href="/Vintage-Clothes-Exchange/src/Views/account.php">Account $username</a>
                                         </li>
                                     </ul>
                                 </div>

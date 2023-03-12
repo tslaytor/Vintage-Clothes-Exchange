@@ -4,6 +4,7 @@ namespace App\Models\Products;
 
 require_once __DIR__ . '/../../../vendor/autoload.php';
 
+use App\Controllers\Connection;
 use Exception;
 
 abstract class AbstractTop extends AbstractItem
@@ -20,18 +21,7 @@ abstract class AbstractTop extends AbstractItem
     public function getType(): ?string
     {
         return $this->type;
-//        if ($this->type === 0) {
-//            return 'T-Shirt';
-//        }
-//        else if ($this->type === 1)
-//        {
-//            return 'Jumper';
-//        }
-//        else
-//        {
-//            throw new Exception("The top type saved is not valid, must be int 1 or 2");
-//        }
-        
+
     }
 
     public function setType($type): void

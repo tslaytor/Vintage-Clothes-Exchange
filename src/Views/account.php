@@ -16,12 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 
 echo Header::generate();
 ?>
-    <h1>Welcome to the Account page, y'all</h1>
-    <?php
-        VarDumper::dump($_SESSION);
-
-
-    ?>
+    <h1>Account Page</h1>
 
     <?php if (!isset($_SESSION['USER'])): ?>
         <div><a href="user-login.php">Login</a></div>
@@ -31,7 +26,6 @@ echo Header::generate();
         <div>Hello, <?php echo $user->getUsername(); ?></div>
         <div>Your account balance is: £<?php echo $user->getCredit() ?></div>
         <div><a href="add-credit.php">Add credit</a></div>
-        <div><a href="user-logout.php">Log out</a></div>
         <?php echo LogoutForm::generate(); ?>
     <?php endif; ?>
 
