@@ -87,7 +87,6 @@ class FormProcessing
 
     public static function sellItem(AbstractItem $productObj, $post, $type)
     {
-        VarDumper::dump($post['size']);
         VarDumper::dump($productObj);
         if ($productObj::class === "App\Models\Products\MensTrouser"){
             $post['size'] = ['waist' => $post['waist'], 'leg' => $post['leg']];

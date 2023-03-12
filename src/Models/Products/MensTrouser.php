@@ -10,11 +10,11 @@ class MensTrouser extends AbstractTrouser
 {
     private ?array $size;
 
-    public function __construct()
+    public function __construct($gender = 'Mens')
     {
         parent::__construct();
 
-        $this->setGender('Mens');
+        $this->setGender($gender);
         $this->size = null;
     }
 

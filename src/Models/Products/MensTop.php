@@ -13,12 +13,12 @@ class MensTop extends AbstractTop
     /**
      * @throws Exception
      */
-    public function __construct()
+    public function __construct($gender = 'Mens')
     {
         parent::__construct();
 
         $this->size = null;
-        $this->setGender('Mens');
+        $this->setGender($gender);
     }
 
     public function getSize(): ?string

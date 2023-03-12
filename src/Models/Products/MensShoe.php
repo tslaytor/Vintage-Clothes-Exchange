@@ -8,10 +8,10 @@ use Symfony\Component\VarDumper\VarDumper;
 class MensShoe extends AbstractShoe
 {
 
-    public function __construct()
+    public function __construct($gender = 'Mens')
     {
         parent::__construct();
-        $this->setGender('Mens');
+        $this->setGender($gender);
     }
 
     /**

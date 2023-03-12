@@ -29,10 +29,10 @@ echo Header::generate();
     <a href="sell-womens-jumper.php"><li>Women's Jumper</li></a>
     <a href="sell-womens-trousers.php"><li>Women's Trousers</li></a>
     <a href="sell-womens-shoes.php"><li>Women's Shoes</li></a>
-    <a><li>Unisex T-shirt</li></a>
-    <a><li>Unisex Jumper</li></a>
-    <a><li>Unisex Trousers</li></a>
-    <a><li>Unisex Shoes</li></a>
+    <a href="sell-unisex-tshirt.php"><li>Unisex T-shirt</li></a>
+    <a href="sell-unisex-jumper.php"><li>Unisex Jumper</li></a>
+    <a href="sell-unisex-trousers.php"><li>Unisex Trousers</li></a>
+    <a href="sell-unisex-shoes.php"><li>Unisex Shoes</li></a>
 </ul>
 
 <?php echo Footer::generate(); ?>
