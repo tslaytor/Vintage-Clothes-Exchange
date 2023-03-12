@@ -17,10 +17,8 @@ abstract class AbstractTrouser extends AbstractItem
 
     public function setType($type): void
     {
-        if (!is_int($type)){
-            throw new Exception("Trouser type property must be a int");
-        }
-        if ($type !== 2){
+
+        if ($type != 2){
             throw new Exception("Trouser type property must be int 2");
         }
         $this->type = $type;

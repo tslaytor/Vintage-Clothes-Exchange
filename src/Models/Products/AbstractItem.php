@@ -10,6 +10,7 @@ use \Exception as Exception;
 
 abstract class AbstractItem
 {
+    private ?int $id;
     private ?int $sellerId;
     private ?string $title;
     private ?string $image; 
@@ -19,11 +20,28 @@ abstract class AbstractItem
 
     protected function __construct()
     {
+        $this->id = null;
         $this->sellerId = null;
         $this->title = null;
         $this->image = null;
         $this->gender = null;
         $this->condition = null;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId(int $id): void
+    {
+        $this->id = $id;
     }
 
     public function setSellerId($sellerId): void
