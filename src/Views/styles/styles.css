@@ -3,10 +3,6 @@ header {
   width: 100%;
   top: 0; }
 
-.browse-by-type {
-  position: fixed;
-  top: 56px; }
-
 form {
   margin: 2rem; }
 
@@ -48,7 +44,12 @@ h1, h2 {
 .logoutForm {
   text-align: center; }
 
+.filter-form {
+  margin: 0.5rem; }
+
 .browse-by-type {
+  position: fixed;
+  top: 56px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -57,7 +58,6 @@ h1, h2 {
 
 .browse-by-type > li {
   list-style: none;
-  margin: 1rem 2rem;
   color: cadetblue; }
   .browse-by-type > li a {
     color: cadetblue;
@@ -82,6 +82,10 @@ h1, h2 {
     height: 280px;
     width: 100%;
     object-fit: contain; }
+
+.users-listing {
+  border: cadetblue solid 2px !important;
+  background-color: #c9c9c9; }
 
 .image-container {
   flex-grow: 1; }

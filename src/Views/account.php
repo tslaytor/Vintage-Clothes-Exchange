@@ -5,7 +5,7 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 
 use App\Controllers\FormProcessing;
 use Symfony\Component\VarDumper\VarDumper;
-use App\Models\PageElements\HeadersAndFooters\Header;
+use App\Models\PageElements\OtherElements\Header;
 use App\Models\PageElements\Forms\LogoutForm;
 
 session_start();

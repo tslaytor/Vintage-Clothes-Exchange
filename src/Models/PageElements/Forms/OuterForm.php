@@ -15,5 +15,5 @@ abstract class OuterForm
             $method, $action, $class, $generatedContent);
     }
 
-    abstract public static function generate(): string;
+//    abstract public static function generate(): string;
 }

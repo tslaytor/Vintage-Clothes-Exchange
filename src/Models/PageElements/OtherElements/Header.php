@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\PageElements\HeadersAndFooters;
+namespace App\Models\PageElements\OtherElements;
 use App\Models\User\User;
 
 class Header

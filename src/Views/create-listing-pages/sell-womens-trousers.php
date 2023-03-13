@@ -7,8 +7,8 @@ require_once __DIR__ . '/../../../vendor/autoload.php';
 use App\Controllers\FormProcessing;
 use App\Models\PageElements\Forms\WomensTrousersForm;
 use App\Models\Products\WomensTrouser;
-use App\Models\PageElements\HeadersAndFooters\Footer;
-use App\Models\PageElements\HeadersAndFooters\Header;
+use App\Models\PageElements\OtherElements\Footer;
+use App\Models\PageElements\OtherElements\Header;
 
 session_start();
 
