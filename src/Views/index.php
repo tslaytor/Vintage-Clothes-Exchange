@@ -6,15 +6,8 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 
 use App\Models\PageElements\OtherElements\Header;
 use App\Models\PageElements\OtherElements\Footer;
-use App\Models\PageElements\OtherElements\ProductTile;
 use App\Models\PageElements\Forms\FilterForm;
 use App\Controllers\Lister;
-use App\Models\Products\MensShoe;
-use App\Models\Products\MensTop;
-use App\Models\Products\WomensTop;
-use App\Models\Products\WomensTrouser;
-use Exception;
-use Symfony\Component\VarDumper\VarDumper;
 
 session_start();
 
@@ -43,27 +36,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         <li><?php echo FilterForm::generate('unisexTrousers', 'Unisex Trousers') ?></li>
         <li><?php echo FilterForm::generate('unisexShoes', 'Unisex Shoes') ?></li>
 
-<!--        <li><a style="color: #a31b1b" href="index.php">All</a></li>-->
-<!--        <li><a href="mens-tshirts.php">Mens Tshirts</a></li>-->
-<!--        <li><a href="mens-jumpers.php">Mens Jumpers</a></li>-->
-<!--        <li><a href="mens-trousers.php">Mens Trousers</a></li>-->
-<!--        <li><a href="mens-shoes.php">Mens Shoes</a></li>-->
-<!--        <li><a href="womens-tshirts.php">Womens Tshirts</a></li>-->
-<!--        <li><a href="womens-jumpers.php">Womens Jumpers</a></li>-->
-<!--        <li><a href="womens-trousers.php">Womens Trousers</a></li>-->
-<!--        <li><a href="womens-shoes.php">Womens Shoes</a></li>-->
-<!--        <li><a href="unisex-tshirts.php">Unisex Tshirts</a></li>-->
-<!--        <li><a href="unisex-jumpers.php">Unisex Jumpers</a></li>-->
-<!--        <li><a href="unisex-trousers.php">Unisex Trousers</a></li>-->
-<!--        <li><a href="unisex-shoes.php">Unisex Shoes</a></li>-->
     </ul>
 </div>
 <div class="grid-container">
 
-<?php foreach ($products as $product) {
-   echo ProductTile::generate($product);
-}?>
-
+    <?php foreach ($products as $product) :?>
+       <?php $userListing = '';
+            $seller = $product->getSeller();
+            if (isset($_SESSION['USER'])){
+                if ($product->getSellerId() === $_SESSION['USER']->getId()){
+                    $userListing = 'user-listing';
+                    $seller = 'You';
+                }
+            } ?>
+            <div class="product-listing <?php echo $userListing ?>">
+                <div class="listing-title"><?php echo $product->getTitle(); ?></div>
+                <div class="listing-gender"><?php echo $product->getGender(); ?></div>
+                <div class="image-container"><img class="listing-image" src="<?php echo $product->getImage(); ?>"></div>
+                <div class="listing-condition">Type: <?php echo $product->getTypeName(); ?></div>
+                <div class="listing-condition">Size: <?php echo $product->getSize(); ?></div>
+                <div class="listing-condition">Condition: <?php echo $product->getConditionText(); ?></div>
+                <div class="listing-price">Price: £<?php echo $product->getPrice(); ?></div>
+                <div class="listing-sold-by">Sold by: <?php echo $seller; ?></div>
+            </div>
+    <?php endforeach; ?>
 </div>
 
 <?php echo Footer::generate();?>;
