@@ -1,6 +1,6 @@
 # Vintage-Clothes-Exchange
 
-The Vintage Clothes Exchange is a project I built to simulate a e-commerce store for 2nd hand clothes.
+The Vintage Clothes Exchange is a project I am building (in progress) to simulate a e-commerce store for 2nd hand clothes. I'm attempting to build the whole thing without any Javascript.
 
 Users can create an account with just a username and password. Once they are logged in, they can:
 
