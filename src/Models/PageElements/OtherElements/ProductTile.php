@@ -7,9 +7,11 @@ class ProductTile
     public static function generate($product): string
     {
         $userListing = '';
+        $seller = $product->getSeller();
         if (isset($_SESSION['USER'])){
             if ($product->getSellerId() === $_SESSION['USER']->getId()){
                 $userListing = 'user-listing';
+                $seller = 'You';
             }
         }
         $title = $product->getTitle();
@@ -19,7 +21,7 @@ class ProductTile
         $size = $product->getSize();
         $condition = $product->getConditionText();
         $price = $product->getPrice();
-        $seller = $product->getSeller();
+
 
 
         return <<<EOF
